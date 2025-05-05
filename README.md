@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Create a .env file and define an environment variable named REACT_APP_API_KEY_PARAM, setting it with your API key from the following site : www.themoviedb.org
+Create a .env.local file and define an environment variable named REACT_APP_API_KEY_PARAM, setting it with your API key from the following site : www.themoviedb.org
 
 ## Available Scripts
 

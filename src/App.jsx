@@ -13,6 +13,13 @@ export function App() {
   const [currentTVShow, setcurrentTVShow] = useState();
   const [recommendationsList, setRecommendationsList] = useState([]);
 
+  const [searchText, setSearchText] = useState("");
+
+  function handleTVShowClick(tvShow) {
+    setcurrentTVShow(tvShow); // met à jour la série sélectionnée
+    setSearchText(""); // Réinitialise le champ de recherche
+  }
+
   async function fetchPopulars() {
     try {
       const populars = await TVShowAPI.fetchPopulars();
@@ -52,7 +59,7 @@ export function App() {
   async function searchTVShow(tvShowName) {
     try {
       const searchResponse = await TVShowAPI.searchByTitle(tvShowName);
-      console.log(searchResponse);
+
       if (searchResponse.length > 0) {
         setcurrentTVShow(searchResponse[0]);
       }
@@ -80,7 +87,11 @@ export function App() {
               />
             </div>
             <div className="col-sm-12 col-md-4">
-              <SearchBar onSubmit={searchTVShow} />
+              <SearchBar
+                onSubmit={searchTVShow}
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+              />
             </div>
           </div>
         </div>
@@ -91,7 +102,8 @@ export function App() {
           {recommendationsList && recommendationsList.length > 0 && (
             <>
               <TVShowList
-                onClickItem={setcurrentTVShow}
+                // onClickItem={setcurrentTVShow}
+                onClickItem={handleTVShowClick}
                 tvShowList={recommendationsList}
               />
             </>
