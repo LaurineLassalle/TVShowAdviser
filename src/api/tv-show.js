@@ -13,7 +13,7 @@ export class TVShowAPI {
     }
 
     static async searchByTitle(title){
-        const response = await axios.get(`${BASE_URL}/searsch/tv${API_KEY_PARAM}&query=${title}${API_LANGUAGE}`);
+        const response = await axios.get(`${BASE_URL}/search/tv${API_KEY_PARAM}&query=${title}${API_LANGUAGE}`);
         return response.data.results;
     }
 }
